@@ -1,18 +1,26 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.korshunru.rgsgitcommiter</id>
-    <name>RGS-git-commiter Template</name>
+    <name>RGS git commiter</name>
     <vendor>korshunru</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.korshunru.rgsgitcommiter.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <vcs.commitMessageProvider implementation="com.github.korshunru.rgsgitcommiter.providers.GitMessageTagCheckerProvider"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.korshunru.rgsgitcommiter.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
+                class="com.github.korshunru.rgsgitcommiter.actions.HandlerButton" text="HandlerButton"
+                description="HandlerButton">
+            <add-to-group
+                    group-id="VcsToolbarActions"
+                    anchor="before"
+                    relative-to-action="Git.Commit.Stage"/>
+        </action>
+    </actions>
 </idea-plugin>
