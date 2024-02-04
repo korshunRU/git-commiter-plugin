@@ -3,6 +3,7 @@
     <id>com.github.korshunru.rgsgitcommiter</id>
     <name>RGS git commiter</name>
     <vendor>korshunru</vendor>
+    <description>Simple plugin for quick paste the current branch name to commit message</description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
