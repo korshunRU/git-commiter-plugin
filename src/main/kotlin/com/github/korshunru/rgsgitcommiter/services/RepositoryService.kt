@@ -1,5 +1,6 @@
 package com.github.korshunru.rgsgitcommiter.services
 
+import com.github.korshunru.rgsgitcommiter.RgsBundle
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.project.Project
 import git4idea.repo.GitRepositoryManager
@@ -13,5 +14,6 @@ class RepositoryService(private val project: Project) {
             .repositories.firstOrNull()
             ?.currentBranch
             ?.name
-            ?: "GAKRGS-"
+            ?.let { String.format(RgsBundle.message("labelTemplate"), it) }
+            ?: RgsBundle.message("labelDefaultTemplate")
 }

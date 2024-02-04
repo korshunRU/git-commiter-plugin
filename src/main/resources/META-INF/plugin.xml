@@ -7,7 +7,7 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
+    <resource-bundle>messages.RgsBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <vcs.commitMessageProvider implementation="com.github.korshunru.rgsgitcommiter.providers.GitMessageTagCheckerProvider"/>
@@ -15,12 +15,12 @@
 
     <actions>
         <action id="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
-                class="com.github.korshunru.rgsgitcommiter.actions.HandlerButton" text="HandlerButton"
-                description="HandlerButton">
-            <add-to-group
-                    group-id="VcsToolbarActions"
-                    anchor="before"
-                    relative-to-action="Git.Commit.Stage"/>
+                class="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
+                text="Paste the branch name"
+                description="Paste the branch name">
+            <add-to-group group-id="Vcs.Commit.PrimaryCommitActions"
+                          anchor="after"
+                          relative-to-action="Git.Commit.And.Push.Executor"/>
         </action>
     </actions>
 </idea-plugin>

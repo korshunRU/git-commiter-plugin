@@ -2,6 +2,11 @@
   <configuration default="false" name="Run IDE for UI Tests" type="GradleRunConfiguration" factoryName="Gradle">
     <log_file alias="idea.log" path="$PROJECT_DIR$/build/idea-sandbox/system/log/idea.log" />
     <ExternalSystemSettings>
+      <option name="env">
+        <map>
+          <entry key="github_token" value="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" />
+        </map>
+      </option>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
       <option name="externalSystemIdString" value="GRADLE" />
