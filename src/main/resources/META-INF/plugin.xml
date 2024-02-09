@@ -1,0 +1,35 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.github.korshunru.rgsgitcommiter</id>
+    <name>RGS git commiter</name>
+    <vendor>korshunru</vendor>
+    <description>
+        <![CDATA[
+        <html>
+        <body>
+            <p>Simple plugin for quick paste the current branch name to commit message</p>
+        </body>
+        </html>
+        ]]>
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <resource-bundle>messages.RgsBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <vcs.commitMessageProvider implementation="com.github.korshunru.rgsgitcommiter.providers.GitMessageTagCheckerProvider"/>
+    </extensions>
+
+    <actions>
+        <action id="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
+                class="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
+                text="Paste the branch name"
+                description="Paste the branch name">
+            <add-to-group group-id="Vcs.Commit.PrimaryCommitActions"
+                          anchor="after"
+                          relative-to-action="Git.Commit.And.Push.Executor"/>
+        </action>
+    </actions>
+</idea-plugin>
