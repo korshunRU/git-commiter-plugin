@@ -14,6 +14,7 @@ class RepositoryService(private val project: Project) {
             .repositories.firstOrNull()
             ?.currentBranch
             ?.name
-            ?.let { String.format(RgsBundle.message("labelTemplate"), it) }
+            ?.let { String.format(RgsBundle.message("labelTemplate"),
+                it.substring(it.indexOf("/") + 1, it.length)) }
             ?: RgsBundle.message("labelDefaultTemplate")
 }
