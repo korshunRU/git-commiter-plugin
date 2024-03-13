@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.korshunru.rgsgitcommiter</id>
-    <name>RGS git commiter</name>
+    <name>RGS Git Commiter</name>
     <vendor>korshunru</vendor>
     <description>
         <![CDATA[
@@ -19,17 +19,39 @@
     <resource-bundle>messages.RgsBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <vcs.commitMessageProvider implementation="com.github.korshunru.rgsgitcommiter.providers.GitMessageTagCheckerProvider"/>
+        <applicationService
+                serviceImplementation="com.github.korshunru.rgsgitcommiter.config.PluginSettingsState"/>
+        <applicationConfigurable
+                instance="com.github.korshunru.rgsgitcommiter.config.PluginConfig"
+                id="com.github.korshunru.rgsgitcommiter.config.PluginConfig"
+                displayName="RGS Commiter Settings"/>
+        <vcs.commitMessageProvider
+                implementation="com.github.korshunru.rgsgitcommiter.providers.GitMessageTagCheckerProvider"/>
+        <toolWindow
+                id="Task Info"
+                secondary="true"
+                icon="AllIcons.Toolwindows.WebToolWindow"
+                anchor="left"
+                canCloseContents="false"
+                factoryClass="com.github.korshunru.rgsgitcommiter.toolwindow.TaskInfoToolWindow"/>
     </extensions>
 
     <actions>
         <action id="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
                 class="com.github.korshunru.rgsgitcommiter.actions.HandlerButton"
-                text="Paste the branch name"
+                text="Paste the Branch Name"
                 description="Paste the branch name">
             <add-to-group group-id="Vcs.Commit.PrimaryCommitActions"
                           anchor="after"
                           relative-to-action="Git.Commit.And.Push.Executor"/>
         </action>
+<!--        <action id="com.github.korshunru.rgsgitcommiter.actions.TaskInfoHandler"-->
+<!--                class="com.github.korshunru.rgsgitcommiter.actions.TaskInfoHandler"-->
+<!--                text="Task Info"-->
+<!--                description="Opens the window contains some information about current task">-->
+<!--            <add-to-group group-id="VcsGroups"-->
+<!--                          anchor="after"-->
+<!--                          relative-to-action="Vcs.MainMenu"/>-->
+<!--        </action>-->
     </actions>
 </idea-plugin>
